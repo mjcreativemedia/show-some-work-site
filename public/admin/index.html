@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show Some Work Admin</title>
+    <script>
+      const basePath = window.location.pathname.replace(/\/admin\/?$/, "/");
+      window.location.replace(`${basePath}?admin=1`);
+    </script>
+  </head>
+  <body>
+    <a href="../?admin=1">Open admin</a>
+  </body>
+</html>
