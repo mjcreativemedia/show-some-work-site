@@ -14,7 +14,7 @@ export type DailyLog = {
 export const site = {
   name: "Show Some Work",
   statement:
-    "Lost my tech job. Spending the summer outside. Training every day. Eating once. No plan. Just showing some work.",
+    "Spending the summer outside. Training every day. Eating once. No plan. Just showing some work.",
   mark: "/show-some-work-mark.png",
   hashtag: "#showsomework",
   trainWithMe: {
