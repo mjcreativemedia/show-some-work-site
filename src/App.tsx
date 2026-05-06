@@ -202,9 +202,11 @@ function Header({ currentPage }: { currentPage: "log" | "workouts" }) {
         <p className="font-mono text-xs font-bold uppercase tracking-[0.22em]">
           {site.hashtag}
         </p>
-        <h1 className="mt-3 max-w-4xl text-5xl font-black uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
-          {currentPage === "workouts" ? "Workouts" : site.name}
-        </h1>
+        {currentPage === "workouts" && (
+          <h1 className="mt-3 max-w-4xl text-5xl font-black uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
+            Workouts
+          </h1>
+        )}
         <nav className="mt-5 flex flex-wrap gap-4 font-mono text-sm font-bold uppercase text-black/65">
           <a className={currentPage === "log" ? "text-black" : "hover:text-black"} href="./">
             Log
