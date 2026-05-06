@@ -13,7 +13,7 @@ function sortLogs(logs: DailyLog[]) {
 }
 
 function getTotalReps(entry: DailyLog) {
-  return entry.pullUps + entry.dips + entry.squats;
+  return entry.pullUps + (entry.pushUps ?? 0) + entry.dips + entry.squats;
 }
 
 function createBlankLog(logs: DailyLog[]): DailyLog {
@@ -23,13 +23,16 @@ function createBlankLog(logs: DailyLog[]): DailyLog {
     day: nextDay,
     date: today(),
     location: "Chicago",
+    dayType: "",
     fasted: 18,
     outside: 7,
     pullUps: 0,
+    pushUps: 0,
     dips: 0,
     squats: 0,
     notes: "Still here.",
     video: "",
+    post: "",
   };
 }
 
@@ -227,6 +230,16 @@ function AdminPage() {
                   onChange={(event) => setEntry({ ...entry, location: event.target.value })}
                 />
               </label>
+              <label className="font-mono text-sm uppercase text-black/65">
+                Day type
+                <input
+                  className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
+                  type="text"
+                  value={entry.dayType ?? ""}
+                  placeholder="Light Day"
+                  onChange={(event) => setEntry({ ...entry, dayType: event.target.value })}
+                />
+              </label>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
@@ -262,7 +275,7 @@ function AdminPage() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-4">
               <label className="font-mono text-sm uppercase text-black/65">
                 Pull-ups
                 <input
@@ -272,6 +285,18 @@ function AdminPage() {
                   min="0"
                   onChange={(event) =>
                     setEntry({ ...entry, pullUps: numberValue(event.target.value) })
+                  }
+                />
+              </label>
+              <label className="font-mono text-sm uppercase text-black/65">
+                Push-ups
+                <input
+                  className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
+                  type="number"
+                  value={entry.pushUps ?? 0}
+                  min="0"
+                  onChange={(event) =>
+                    setEntry({ ...entry, pushUps: numberValue(event.target.value) })
                   }
                 />
               </label>
@@ -310,16 +335,28 @@ function AdminPage() {
               />
             </label>
 
-            <label className="font-mono text-sm uppercase text-black/65">
-              YouTube link
-              <input
-                className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
-                type="url"
-                value={entry.video}
-                placeholder="https://www.youtube.com/watch?v=XXXX"
-                onChange={(event) => setEntry({ ...entry, video: event.target.value })}
-              />
-            </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="font-mono text-sm uppercase text-black/65">
+                YouTube video link
+                <input
+                  className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
+                  type="url"
+                  value={entry.video}
+                  placeholder="https://www.youtube.com/watch?v=XXXX"
+                  onChange={(event) => setEntry({ ...entry, video: event.target.value })}
+                />
+              </label>
+              <label className="font-mono text-sm uppercase text-black/65">
+                YouTube post link
+                <input
+                  className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
+                  type="url"
+                  value={entry.post ?? ""}
+                  placeholder="https://youtube.com/post/XXXX"
+                  onChange={(event) => setEntry({ ...entry, post: event.target.value })}
+                />
+              </label>
+            </div>
 
             <div className="flex flex-col gap-3 border-t border-black pt-5 sm:flex-row sm:items-center">
               <button

@@ -8,6 +8,13 @@ export type WorkoutDayType = {
   note?: string;
 };
 
+export type ContentFlowItem = {
+  name: string;
+  cadence: string;
+  role: string;
+  lines: string[];
+};
+
 export const workoutIntro = {
   eyebrow: "Day Types",
   title: "Moods, conditions, ways of showing up.",
@@ -89,5 +96,38 @@ export const workoutDayTypes: WorkoutDayType[] = [
     name: "Silence Day",
     label: "No speaking the entire session.",
     lines: ["No music.", "No talking.", "Just reps."],
+  },
+];
+
+export const contentFlowIntro = {
+  eyebrow: "Content Flow",
+  title: "YouTube only. Less performance. More archive.",
+  text: "The channel should feel like public time passing: proof, field notes, atmosphere, and occasional longer reflection.",
+};
+
+export const contentFlow: ContentFlowItem[] = [
+  {
+    name: "Shorts",
+    cadence: "Daily",
+    role: "Proof",
+    lines: ["Pull-up clips", "Walking clips", "Lake shots", "Fasted check-ins", "Rain training"],
+  },
+  {
+    name: "Posts",
+    cadence: "Daily / Weekly",
+    role: "Archive",
+    lines: ["Logs", "Photos", "Thoughts", "Day types", "Field notes"],
+  },
+  {
+    name: "Live",
+    cadence: "Occasional",
+    role: "Presence",
+    lines: ["Sunrise sessions", "Walking streams", "Rain training", "Cooldowns", "Quiet reps"],
+  },
+  {
+    name: "Long Form",
+    cadence: "Occasional",
+    role: "Story",
+    lines: ["30 days outside", "Why this started", "Fasting all summer", "The psychology of showing up"],
   },
 ];

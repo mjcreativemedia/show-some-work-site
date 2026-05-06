@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "day": 1,
+    "date": "2026-05-05",
+    "location": "Chicago",
+    "dayType": "Light Day",
+    "fasted": 0,
+    "outside": 1,
+    "pullUps": 100,
+    "pushUps": 200,
+    "dips": 0,
+    "squats": 100,
+    "notes": "Still showed up.",
+    "video": "",
+    "post": "http://youtube.com/post/Ugkxrk46DwL7yW2Cun3CaCY1Y_2mt8wWd7ka?si=qztKzH8s00dKjLsH"
+  }
+]

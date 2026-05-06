@@ -2,13 +2,16 @@ export type DailyLog = {
   day: number;
   date: string;
   location: string;
+  dayType?: string;
   fasted: number;
   outside: number;
   pullUps: number;
+  pushUps?: number;
   dips: number;
   squats: number;
   notes: string;
   video: string;
+  post?: string;
 };
 
 export const site = {
@@ -19,7 +22,7 @@ export const site = {
   hashtag: "#showsomework",
   trainWithMe: {
     title: "Train With Me",
-    location: "Chicago · Outdoors",
+    location: "Chicago Outdoors",
     lines: ["No contracts.", "Just show up and work."],
     text: "773-236-6224",
   },
