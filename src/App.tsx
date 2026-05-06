@@ -41,6 +41,70 @@ function formatDate(date: string) {
   }).format(parsed);
 }
 
+function formatShortDate(date: string) {
+  const parsed = new Date(`${date}T12:00:00`);
+
+  return new Intl.DateTimeFormat("en", {
+    month: "numeric",
+    day: "numeric",
+    year: "2-digit",
+  }).format(parsed);
+}
+
+function getPostLines(entry: DailyLog) {
+  return [
+    entry.pullUps ? `Pull-ups ${entry.pullUps}` : "",
+    entry.pushUps ? `Push-ups ${entry.pushUps}` : "",
+    entry.dips ? `Dips ${entry.dips}` : "",
+    entry.squats ? `Squats ${entry.squats}` : "",
+    entry.outside ? `Walking ${entry.outside * 60} mins` : "",
+  ].filter(Boolean);
+}
+
+function CommunityPost({ entry }: { entry: DailyLog }) {
+  if (!entry.post) {
+    return null;
+  }
+
+  return (
+    <a
+      className="block min-h-[22rem] border border-black bg-[#0f0f0f] p-5 text-white hover:bg-black sm:p-6"
+      href={entry.post}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <div className="flex gap-4">
+        <img
+          className="h-14 w-14 shrink-0 rounded-full border border-white/30 bg-black object-cover"
+          src={site.mark}
+          alt=""
+          aria-hidden="true"
+        />
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="text-xl font-black leading-none">{site.name}</p>
+            <p className="font-mono text-sm uppercase text-white/55">YouTube post</p>
+          </div>
+
+          <p className="mt-5 text-3xl font-black leading-none">{formatShortDate(entry.date)}</p>
+
+          <div className="mt-9 space-y-2 text-3xl font-black leading-tight sm:text-4xl">
+            {getPostLines(entry).map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+
+          {entry.dayType && (
+            <p className="mt-10 text-3xl font-black leading-none">{entry.dayType}</p>
+          )}
+
+          <p className="mt-5 font-mono text-sm uppercase text-white/55">Open on YouTube</p>
+        </div>
+      </div>
+    </a>
+  );
+}
+
 function Media({ entry }: { entry: DailyLog }) {
   const embedUrl = toYouTubeEmbedUrl(entry.video);
 
@@ -59,26 +123,7 @@ function Media({ entry }: { entry: DailyLog }) {
   }
 
   if (entry.post) {
-    return (
-      <a
-        className="grid aspect-video place-items-center border border-black bg-white p-6 text-center hover:bg-black hover:text-white"
-        href={entry.post}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <span>
-          <span className="block font-mono text-xs font-bold uppercase tracking-[0.22em] text-current/55">
-            YouTube Post
-          </span>
-          <span className="mt-3 block text-3xl font-black uppercase leading-none">
-            {formatDate(entry.date)}
-          </span>
-          <span className="mt-4 block font-mono text-sm uppercase text-current/65">
-            Open field note
-          </span>
-        </span>
-      </a>
-    );
+    return <CommunityPost entry={entry} />;
   }
 
   return (
