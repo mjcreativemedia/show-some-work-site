@@ -383,22 +383,6 @@ function LogPage() {
         )}
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-6">
-        <div className="border-t border-black py-8">
-          <p className="font-mono text-sm uppercase text-black/65">
-            {site.trainWithMe.location}
-          </p>
-          <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-6xl">
-            {site.trainWithMe.title}
-          </h2>
-          <div className="mt-6 max-w-xl text-2xl font-black leading-tight">
-            {site.trainWithMe.lines.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-          </div>
-          <p className="mt-6 text-2xl font-black">Text: {site.trainWithMe.text}</p>
-        </div>
-      </section>
     </main>
   );
 }
