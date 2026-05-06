@@ -21,4 +21,5 @@ export const site = {
     "Spending the summer outside. Training every day. Eating once. No plan. Just showing some work.",
   mark: "/show-some-work-mark.png",
   hashtag: "#showsomework",
+  location: "Chicago Outdoors",
 };

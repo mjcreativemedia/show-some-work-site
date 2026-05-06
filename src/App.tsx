@@ -238,6 +238,30 @@ function Header({ currentPage }: { currentPage: "log" | "workouts" }) {
   );
 }
 
+function Footer({ currentPage }: { currentPage: "log" | "workouts" }) {
+  return (
+    <footer className="mx-auto max-w-5xl px-4 pb-8 sm:px-6">
+      <div className="flex flex-col gap-5 border-t border-black pt-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-3xl font-black uppercase leading-none">{site.name}</p>
+          <p className="mt-3 font-mono text-sm uppercase text-black/65">{site.location}</p>
+        </div>
+        <nav className="flex flex-wrap gap-4 font-mono text-sm font-bold uppercase text-black/65">
+          <a className={currentPage === "log" ? "text-black" : "hover:text-black"} href="/">
+            Log
+          </a>
+          <a
+            className={currentPage === "workouts" ? "text-black" : "hover:text-black"}
+            href="/workouts/"
+          >
+            Workouts
+          </a>
+        </nav>
+      </div>
+    </footer>
+  );
+}
+
 function WorkoutDayCard({ workout }: { workout: WorkoutDayType }) {
   return (
     <article className="border-t border-black py-8">
@@ -334,6 +358,8 @@ function WorkoutsPage() {
           <ContentFlowCard key={item.name} item={item} />
         ))}
       </section>
+
+      <Footer currentPage="workouts" />
     </main>
   );
 }
@@ -383,6 +409,7 @@ function LogPage() {
         )}
       </section>
 
+      <Footer currentPage="log" />
     </main>
   );
 }
