@@ -49,7 +49,7 @@ function Media({ entry }: { entry: DailyLog }) {
       <iframe
         className="aspect-video w-full border border-black bg-white"
         src={embedUrl}
-        title={`Day ${entry.day} video`}
+        title={`${formatDate(entry.date)} video`}
         frameBorder="0"
         loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -71,7 +71,7 @@ function Media({ entry }: { entry: DailyLog }) {
             YouTube Post
           </span>
           <span className="mt-3 block text-3xl font-black uppercase leading-none">
-            Day {entry.day}
+            {formatDate(entry.date)}
           </span>
           <span className="mt-4 block font-mono text-sm uppercase text-current/65">
             Open field note
@@ -321,7 +321,7 @@ function LogPage() {
           entries.map((entry) => <EntryCard key={entry.day} entry={entry} />)
         ) : (
           <div className="border-t border-black py-8">
-            <p className="font-mono text-sm uppercase text-black/65">Day 1 starts May 5.</p>
+            <p className="font-mono text-sm uppercase text-black/65">May 5, 2026 starts.</p>
             <p className="mt-4 text-2xl font-black">Still here.</p>
           </div>
         )}
