@@ -12,6 +12,7 @@ export type DailyLog = {
   notes: string;
   video: string;
   post?: string;
+  postImage?: string;
 };
 
 export const site = {

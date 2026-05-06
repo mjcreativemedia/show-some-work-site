@@ -33,6 +33,7 @@ function createBlankLog(logs: DailyLog[]): DailyLog {
     notes: "Still here.",
     video: "",
     post: "",
+    postImage: "",
   };
 }
 
@@ -357,6 +358,17 @@ function AdminPage() {
                 />
               </label>
             </div>
+
+            <label className="font-mono text-sm uppercase text-black/65">
+              Post image path
+              <input
+                className="mt-2 w-full border border-black px-3 py-3 font-sans text-base text-black"
+                type="text"
+                value={entry.postImage ?? ""}
+                placeholder="/day-1-youtube-post.webp"
+                onChange={(event) => setEntry({ ...entry, postImage: event.target.value })}
+              />
+            </label>
 
             <div className="flex flex-col gap-3 border-t border-black pt-5 sm:flex-row sm:items-center">
               <button

@@ -99,6 +99,15 @@ function CommunityPost({ entry }: { entry: DailyLog }) {
           )}
 
           <p className="mt-5 font-mono text-sm uppercase text-white/55">Open on YouTube</p>
+
+          {entry.postImage && (
+            <img
+              className="mt-5 aspect-[4/3] w-full rounded-lg object-cover"
+              src={entry.postImage}
+              alt=""
+              loading="lazy"
+            />
+          )}
         </div>
       </div>
     </a>
